@@ -13,6 +13,7 @@ async function convertCurrency() {
 
   if (!amount || isNaN(amount)) {
     resultParagraph.textContent = "Enter valid amount.";
+    resultParagraph.classList.add("text-danger");
     loader.style.display = "none";
     return;
   }
@@ -27,9 +28,10 @@ async function convertCurrency() {
     const result = (amount * exchangeRate).toFixed(2);
 
     resultParagraph.textContent = `${amount} ${currencyCode} = ${result} PLN`;
+    resultParagraph.classList.remove("text-danger");
   } catch (error) {
-    resultParagraph.textContent =
-      "Something went wrong. Please try again later.";
+    resultParagraph.textContent = "Something went wrong. Please try again.";
+    resultParagraph.classList.add("text-danger");
     console.error(error);
   } finally {
     loader.style.display = "none";
