@@ -6,7 +6,7 @@
 body {
   background-color: #aaaaaa;
 }
-#amount {
+.amount-input {
   width: 200px;
 }
 .loader {
