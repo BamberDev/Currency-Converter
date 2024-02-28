@@ -11,8 +11,8 @@ async function convertCurrency() {
   const currencyCode = currencySelect.value;
   const amount = amountInput.value;
 
-  if (!amount || isNaN(amount)) {
-    resultParagraph.textContent = "Enter valid amount.";
+  if (!amount || isNaN(amount) || amount <= 0) {
+    resultParagraph.textContent = "Enter a valid amount.";
     resultParagraph.classList.add("text-danger");
     loader.style.display = "none";
     return;
@@ -24,13 +24,19 @@ async function convertCurrency() {
     );
     const data = await response.json();
 
-    const exchangeRate = data.rates[0].mid;
+    const exchangeRate = data?.rates?.[0]?.mid;
+
+    if (exchangeRate === undefined) {
+      throw new Error("Exchange rate not available.");
+    }
+
     const result = (amount * exchangeRate).toFixed(2);
 
     resultParagraph.textContent = `${amount} ${currencyCode} = ${result} PLN`;
     resultParagraph.classList.remove("text-danger");
   } catch (error) {
-    resultParagraph.textContent = "Something went wrong. Please try again.";
+    resultParagraph.textContent =
+      "Exchange rate not available. Please try again.";
     resultParagraph.classList.add("text-danger");
     console.error(error);
   } finally {
