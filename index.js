@@ -26,7 +26,7 @@ async function convertCurrency() {
 
     const exchangeRate = data?.rates?.[0]?.mid;
 
-    if (exchangeRate === undefined) {
+    if (!exchangeRate) {
       throw new Error("Exchange rate not available.");
     }
 
@@ -38,7 +38,6 @@ async function convertCurrency() {
     resultParagraph.textContent =
       "Exchange rate not available. Please try again.";
     resultParagraph.classList.add("text-danger");
-    console.error(error);
   } finally {
     loader.style.display = "none";
   }
@@ -58,4 +57,10 @@ currencyForm.addEventListener("submit", function (event) {
   convertCurrency();
 });
 
-currencySelect.addEventListener("change", clearApp);
+currencySelect.addEventListener("change", function () {
+  if (amountInput.value !== "") {
+    convertCurrency();
+  } else {
+    resultParagraph.textContent = "";
+  }
+});
