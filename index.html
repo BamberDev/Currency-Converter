@@ -33,14 +33,38 @@
           Convert
         </button>
 
-        <form class="row" id="currency-form">
+        <form class="row align-items-center" id="currency-form">
           <div class="col-md fs-4 text-md-end m-1">
-            <label for="currency">Select currency:</label>
-            <select id="currency">
-              <option value="EUR">EUR</option>
-              <option value="USD">USD</option>
-              <option value="CHF">CHF</option>
-            </select>
+            <div class="my-1">
+              <label for="from-currency">From currency:</label>
+              <select id="from-currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CHF">CHF</option>
+                <option value="CNY">CNY</option>
+                <option value="SEK">SEK</option>
+                <option value="NZD">NZD</option>
+              </select>
+            </div>
+            <div class="my-1">
+              <label for="to-currency">To currency:</label>
+              <select id="to-currency">
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="JPY">JPY</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CHF">CHF</option>
+                <option value="CNY">CNY</option>
+                <option value="SEK">SEK</option>
+                <option value="NZD">NZD</option>
+              </select>
+            </div>
           </div>
           <div class="col-md fs-4 text-md-start m-1">
             <label for="amount">Amount:</label>
@@ -54,7 +78,7 @@
             />
           </div>
         </form>
-        <p class="fs-2" id="result"></p>
+        <p class="fs-1" id="result"></p>
       </div>
       <div class="loader" id="loader"></div>
     </main>
